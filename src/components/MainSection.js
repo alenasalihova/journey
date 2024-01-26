@@ -1,34 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PackageTours, AboutUs, HotTours, Contacts } from './sections';
-//import AboutUs from './sections/AboutUs';
-//import HotTours from './sections/HotTours';
-//import Contacts from './sections/Contacts';
-import $ from 'jquery';
 import'../css/style.css'; 
 
 const MainSection = () => {
+    const [showScrollTop, setShowScrollTop] = useState(false);
+
+    const handleScroll = () => {
+        if (document.documentElement.scrollTop > document.documentElement.clientHeight / 3) {
+          setShowScrollTop(true);
+        } else {
+          setShowScrollTop(false);
+        }
+      };
+  
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  
     useEffect(() => {
-        // Ваш JavaScript-код, например, код для скролла
-        $(window).scroll(function () {
-          if ($(window).scrollTop() > $(window).height() / 3) {
-            $('.scrollToTop').toggleClass('showScrollTop', true);
-          } else {
-            $('.scrollToTop').removeClass('showScrollTop');
-          }
-        });
-        return () => {
-            // Очистка ресурсов или удаление обработчиков при размонтировании компонента
-            // Этот блок выполнится при размонтировании компонента
-            // Важно для предотвращения утечек памяти и нежелательного поведения
-          };
-        }, []);  // Пустой массив зависимостей означает, что эффект выполнится только при монтировании и размонтировании компонента
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
   return (
     <main>
         <PackageTours />
         <AboutUs />
         <HotTours />
         <Contacts />
-        {<a class="scrollToTop" onclick="jQuery('html,body').animate({scrollTop:0}, 'slow');"><span class="fa fa-chevron-up">&#8593;</span></a>}
+        {showScrollTop && (
+        <a className="scrollToTop" onClick={scrollToTop}>
+            <span className="fa fa-chevron-up">&#8593;</span>
+        </a>
+        )}
     </main>
   );
 }

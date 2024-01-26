@@ -1,41 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../css/style.css';
 
 export const AboutUs = () => {
-    useEffect(() => {
-    const apiKey = '54125b5bf70ea26fa8f1343392f24dfd';
-const city = 'Чернигов'; 
-const weatherIcon = document.querySelector('.weather-icon');
-const temperature = document.querySelector('.temperature');
-const weatherDescription = document.querySelector('.weather-description');
-
-async function getWeather() {
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${apiKey}&units=metric`;
-    const res = await fetch(url);
-    const data = await res.json();
-        
-    document.getElementById('city').textContent = data.name + ", " + data.sys.country;
-    document.getElementById('temperature').textContent = "Температура: " + data.main.temp + "°C";
-    document.getElementById('weather-description').textContent = "Описание: " + data.weather[0].description;
-    document.getElementById('wind-speed').textContent = "Скорость ветра: " + data.wind.speed + " км/час";
-    document.getElementById('precipitation').textContent = "Влажность: " + data.main.humidity + "%";
-            
-    const weatherIcon = document.getElementById('weather-icon');
-    const iconCode = data.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
-    weatherIcon.setAttribute('src', iconUrl);
-}
-getWeather();
-
-function setCity(event) {
-    if (event.code === 'Enter') {
-        getWeather();
-        city.blur();
-    }
-}
-document.addEventListener('DOMContentLoaded', getWeather);
-
-}, []);
+    const [weatherData, setWeatherData] = useState({
+        city: '',
+        temperature: '',
+        description: '',
+        windSpeed: '',
+        precipitation: '',
+        icon: '',
+      });
+    
+      useEffect(() => {
+        const apiKey = '54125b5bf70ea26fa8f1343392f24dfd';
+        const city = 'Чернигов';
+    
+        const fetchWeatherData = async () => {
+          try {
+            const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${apiKey}&units=metric`;
+            const res = await fetch(url);
+            const data = await res.json();
+    
+            setWeatherData({
+              city: `${data.name}, ${data.sys.country}`,
+              temperature: `Температура: ${data.main.temp}°C`,
+              description: `Описание: ${data.weather[0].description}`,
+              windSpeed: `Скорость ветра: ${data.wind.speed} км/час`,
+              precipitation: `Влажность: ${data.main.humidity}%`,
+              icon: `https://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+            });
+          } catch (error) {
+            console.error('Error fetching weather data:', error);
+          }
+        };
+    
+        fetchWeatherData();
+      }, []);
+    
   return (
     <div id="aboutus">
       <div className="block1">
@@ -71,19 +72,29 @@ document.addEventListener('DOMContentLoaded', getWeather);
                 <p>Мы предоставляем Вам качественный сервис обслуживания!
                 </p>
             </div>
-      <div className="weather">
-      <h2 id="city" className="city" contenteditable="true"></h2>
-                <div className="box">
-                    <div className="imge">
-                        <img src="" alt="Weather Icon" id="weather-icon" />
-                    </div>
-                    <div className="info">
-                        <div id="temperature" className="temperature"></div>
-                        <div id="weather-description" className="weather-description"></div>
-                        <div id="wind-speed" className="wind-speed"></div>
-                        <div id="precipitation" className="precipitation"></div>
-                    </div>
-                </div>
+            <div className="weather">
+        <h2 id="city" className="city" contentEditable={true}>
+          {weatherData.city}
+        </h2>
+        <div className="box">
+          <div className="image">
+            <img src={weatherData.icon} alt="Weather Icon" id="weather-icon" />
+          </div>
+          <div className="info">
+            <div id="temperature" className="temperature">
+              {weatherData.temperature}
+            </div>
+            <div id="weather-description" className="weather-description">
+              {weatherData.description}
+            </div>
+            <div id="wind-speed" className="wind-speed">
+              {weatherData.windSpeed}
+            </div>
+            <div id="precipitation" className="precipitation">
+              {weatherData.precipitation}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

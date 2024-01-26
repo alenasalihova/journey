@@ -1,5 +1,5 @@
 .App {
-    max-width: 1000px;
+    max-width: 900px;
     width: 100%;
     min-width: 600px;
     margin: auto;
@@ -15,7 +15,7 @@
     display: flex;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
     justify-content: space-evenly;
 }
 .logo {
@@ -260,15 +260,22 @@ p {
 #details, .buttonSend {
     width: 100px;
     height: 30px;
-    position: absolute;
+    margin-left: 30%;
     background-color: rgb(79, 157, 205);
+
 }
-#details {
-    left: 200px;
-    bottom: 25px;
-}
+
 .text {
     padding: 0 10px 5px 10px;
+}
+.scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  cursor: pointer;
 }
 /*контакты*/
 #contacts_all {
@@ -311,7 +318,7 @@ footer {
     height: 30px;
 }
 
-@media (min-width:600px) and (max-width:850px){
+@media (min-width:700px) and (max-width:850px){
     .level{
         margin-top: 70px;
         margin-left: 250px;
@@ -353,8 +360,8 @@ footer {
         background-size: 115%;
     }
 }
-@media screen and (max-width:600px){
-    body {
+@media screen and (max-width:700px){
+    .App {
         width: 100%;
         max-width: 600px;
     }
@@ -362,7 +369,7 @@ footer {
         margin-top: 50px;
         margin-left: 150px;
     }
-    header {
+    .header {
         height: 400px;
     }
     .buttons button {
@@ -420,7 +427,6 @@ footer {
 }
 /* кнопка вверх*/
     .scrollToTop { 
-        opacity:0;
         width:60px;
         height:60px;
         position:fixed;
@@ -440,7 +446,6 @@ footer {
     }
     .showScrollTop{ 
         font-size:14px;
-        opacity:0.5;
     }
     .scrollToTop:hover{
         background-color:#1864df;
@@ -457,7 +462,6 @@ footer {
         font-size: 24px;
         font-weight: bold;
     }
-
     #date {
         font-size: 18px;
     }

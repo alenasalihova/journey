@@ -35,7 +35,7 @@ return () => {
                 </div>
             <h3>Адрес</h3>
             <div className="address">
-                <span>34067, г. Чернигов ул.Космонавтов 28</span>
+                <address>34067, г. Чернигов ул.Космонавтов 28</address>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4967.536075502118!2d31.285380087295653!3d51.499124064552035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d54913d45a86b5%3A0xd2a02d1d8e0fbf00!2z0KbQo9Cc!5e0!3m2!1sru!2snl!4v1684603170997!5m2!1sru!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
     </div>

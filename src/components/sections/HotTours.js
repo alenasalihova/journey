@@ -31,7 +31,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>25 785 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" className="details">Подробнее</button>
+                        <button type="submit" className="buttonSend">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>20 368 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" className="details">Подробнее</button>
+                        <button type="submit" className="buttonSend">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>30 642 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" className="details">Подробнее</button>
+                        <button type="submit" className="buttonSend">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>33 578 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" className="details">Подробнее</button>
+                        <button type="submit" className="buttonSend">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -91,5 +91,3 @@ export const HotTours = () => {
         </div>
   );
 }
-
-//export default HotTours;

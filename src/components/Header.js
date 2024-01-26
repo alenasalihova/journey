@@ -2,33 +2,54 @@ import React, { useEffect } from 'react';
 import '../css/style.css'; 
 
 const Header = () => {
-    useEffect ( () => { const menuItems = document.querySelectorAll('ul#menu li');
-    menuItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            menuItems.forEach((menuItem) => {
-                menuItem.classList.remove('active');
-            });
-            item.classList.add('active');
+    useEffect(() => {
+        // Обновление часов и даты
+        function updateClockAndDate() {
+          const clockElement = document.getElementById('clock');
+          const dateElement = document.getElementById('date');
+          const now = new Date();
+          const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          clockElement.textContent = now.toLocaleTimeString('en-US', timeOptions);
+          dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+    
+        // Установка интервала обновления часов и даты
+        const intervalId = setInterval(updateClockAndDate, 1000);
+        updateClockAndDate();
+    
+        // Очистка интервала при размонтировании компонента
+        return () => {
+          clearInterval(intervalId);
+        };
+      }, []);
+    
+      useEffect(() => {
+        // Обработка кликов по пунктам меню
+        const menuItems = document.querySelectorAll('ul#menu li');
+        const handleMenuItemClick = (item) => {
+          menuItems.forEach((menuItem) => {
+            menuItem.classList.remove('active');
+          });
+          item.classList.add('active');
+        };
+    
+        // Добавление обработчиков для каждого пункта меню
+        menuItems.forEach((item) => {
+          item.addEventListener('click', () => handleMenuItemClick(item));
         });
-    });
-    return () => {
-
-    };
-}, [] );
+    
+        // Очистка обработчиков при размонтировании компонента
+        return () => {
+          menuItems.forEach((item) => {
+            item.removeEventListener('click', () => handleMenuItemClick(item));
+          });
+        };
+      }, []);
+    
   return (
     <div>
-    <div className="first">
-      <a href="#"><img src="./img/homa.png" alt="logo" className="logo" /></a>
-      <div className="logotext">LEVEL TRAVEL</div>
-      <div className="spaсe"></div>
-      <nav>
-        <ul id="menu">
-          <li><a href="#aboutus" className="aboutus" id="menu-item-1">ПРО НАС</a></li>
-          <li><a href="#box4" className="hottours" id="menu-item-2">ГОРЯЧИЕ ТУРЫ</a></li>
-          <li><a href="#contacts_all" className="contacts" id="menu-item-3">КОНТАКТЫ</a></li>
-        </ul>
-      </nav>
-      </div>
+
       <div className='header'>
       <div className="level"><h1>LEVEL TRAVEL</h1></div>
         <div id="dateAndClock">
