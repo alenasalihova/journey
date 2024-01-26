@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactDOM } from 'react-dom';
+//import { ReactDOM } from 'react-dom';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 import Footer from './components/Footer';
-import './css/App.css';
+import './css/style.css';
 
 function App() {
   return (

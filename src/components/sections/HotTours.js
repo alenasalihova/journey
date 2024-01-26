@@ -1,24 +1,23 @@
-import React, { useEffect } from 'react';
-import $ from 'jquery';
-import style from '../../css/style.css'; 
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import '../../css/style.css'; 
 
 export const HotTours = () => {
-    useEffect(() => {
-        $(document).ready(function(){
-            $(".owl-carousel").owlCarousel({
-                items: 2,
-                loop: true
-            });
-          });
-        return () => {
-          
-        };
-      }, []);
+
+      const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      };
   return (
     <div id="box4">
             <h1>Горячие туры</h1>
-
-            <div id="customers-testimonials" className="owl-carousel owl-theme">
+            <Slider {...sliderSettings}>
+            
                 <div className="item">
                     <div className="hotel1">
                         <img src="./img/booking4842_1.png" alt="FUN" className="FUN" />
@@ -32,7 +31,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>25 785 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" id="details">Подробнее</button>
+                        <button type="submit" className="details">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +48,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>20 368 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" id="details">Подробнее</button>
+                        <button type="submit" className="details">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>30 642 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" id="details">Подробнее</button>
+                        <button type="submit" className="details">Подробнее</button>
                         </div>
                     </div>
                 </div>
@@ -83,11 +82,12 @@ export const HotTours = () => {
                         <hr></hr>
                         <h2>33 578 грн</h2>
                         <span>за 2 человек</span>
-                        <button type="submit" id="details">Подробнее</button>
+                        <button type="submit" className="details">Подробнее</button>
                         </div>
                     </div>
                 </div>
-            </div>
+        
+            </Slider>
         </div>
   );
 }

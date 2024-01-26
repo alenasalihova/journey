@@ -2,10 +2,42 @@ import React, { useEffect } from 'react';
 import '../../css/style.css';
 
 export const AboutUs = () => {
+    useEffect(() => {
+    const apiKey = '54125b5bf70ea26fa8f1343392f24dfd';
+const city = 'Чернигов'; 
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
 
+async function getWeather() {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&lang=ru&appid=${apiKey}&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+        
+    document.getElementById('city').textContent = data.name + ", " + data.sys.country;
+    document.getElementById('temperature').textContent = "Температура: " + data.main.temp + "°C";
+    document.getElementById('weather-description').textContent = "Описание: " + data.weather[0].description;
+    document.getElementById('wind-speed').textContent = "Скорость ветра: " + data.wind.speed + " км/час";
+    document.getElementById('precipitation').textContent = "Влажность: " + data.main.humidity + "%";
+            
+    const weatherIcon = document.getElementById('weather-icon');
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+    weatherIcon.setAttribute('src', iconUrl);
+}
+getWeather();
+
+function setCity(event) {
+    if (event.code === 'Enter') {
+        getWeather();
+        city.blur();
+    }
+}
+document.addEventListener('DOMContentLoaded', getWeather);
+
+}, []);
   return (
     <div id="aboutus">
-      <div classNameName="block1">
       <div className="block1">
                 <h1>О нас</h1>
                 <p>Уважаемые любители путешествовать, Мы рады Вас приветствовать 
@@ -39,8 +71,7 @@ export const AboutUs = () => {
                 <p>Мы предоставляем Вам качественный сервис обслуживания!
                 </p>
             </div>
-      </div>
-      <div classNameName="weather">
+      <div className="weather">
       <h2 id="city" className="city" contenteditable="true"></h2>
                 <div className="box">
                     <div className="imge">
@@ -56,6 +87,4 @@ export const AboutUs = () => {
       </div>
     </div>
   );
-}
-
-//export default AboutUs;
+};

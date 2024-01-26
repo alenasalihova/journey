@@ -4,7 +4,7 @@ import { PackageTours, AboutUs, HotTours, Contacts } from './sections';
 //import HotTours from './sections/HotTours';
 //import Contacts from './sections/Contacts';
 import $ from 'jquery';
-import style from '../css/style.css'; 
+import'../css/style.css'; 
 
 const MainSection = () => {
     useEffect(() => {
@@ -24,10 +24,11 @@ const MainSection = () => {
         }, []);  // Пустой массив зависимостей означает, что эффект выполнится только при монтировании и размонтировании компонента
   return (
     <main>
-      <PackageTours />
-      <AboutUs />
-      <HotTours />
-      <Contacts />
+        <PackageTours />
+        <AboutUs />
+        <HotTours />
+        <Contacts />
+        {<a class="scrollToTop" onclick="jQuery('html,body').animate({scrollTop:0}, 'slow');"><span class="fa fa-chevron-up">&#8593;</span></a>}
     </main>
   );
 }

@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import style from '../../css/style.css'; 
+import React from 'react';
+import '../../css/style.css'; 
 
 export const PackageTours = () => {
    
   return (
-    <div classNameName="wrap">
-      <div classNameName="card">
+    <div className="wrap">
+      <div className="card">
       <div className="details">
                     <strong>ПАКЕТНЫЕ ТУРЫ</strong>
                 </div>
@@ -36,5 +36,3 @@ export const PackageTours = () => {
     </div>
   );
 }
-
-//export default PackageTours;

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Форма для отправки письма</title>
+    <style>
+body {
+    width: 600px;
+    margin-left: 20px;
+}
+.first {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    justify-content: space-evenly;
+}
+.logo {
+    height: 50px;
+    margin: 5px 0 5px 10px;
+}
+.logotext {
+    color:rgb(79, 157, 205);
+    font-weight: 700;
+    margin: 15px 0 0 20px;
+}
+.spaсe {
+    flex-basis: 40%;
+}
+ul#menu {
+    list-style-type: none;
+    display: flex;
+}
+
+ul#menu li {
+    padding: 10px;
+    margin: 0 20px 0 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    width: max-content;
+    margin-left: 10px;
+}
+
+ul#menu li.active {
+    transform: scale(1.5);
+    z-index: 20;
+}
+nav a, .aboutus{
+    color:rgb(79, 157, 205);
+    text-decoration: none;
+    font-weight: 700;  
+}
+.formEmail {
+    width: 600px;
+    border: 3px solid gray;
+    display: flex;
+    justify-self: flex-end;
+    flex-direction: column;
+}
+.formEmaill {
+    padding-left: 10px;
+}   
+.buttonSend {
+    width: 100px;
+    height: 30px;
+    float: right;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    background-color: rgb(79, 157, 205);
+} 
+    </style>
+</head>
+<body>
+    <div class="first"><a href="#"><img src="./img/homa.png" alt="logo" class="logo"></a>
+        <div class="logotext">LEVEL TRAVEL</div>
+        <div class="spaсe"></div>
+        <ul id="menu">
+        <li><a href="Journey.html" class="aboutus">НА ГЛАВНУЮ СТРАНИЦУ</a></li>
+        </ul>
+    </div>
+    <div class="formEmail">
+    <h1>Свяжитесь с нами</h1>
+
+    <form class="formEmaill" action="mailto:your-email@example.com" method="post" enctype="text/plain">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Ваш Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="message">Сообщение:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <input class="buttonSend" type="submit" value="Отправить">
+    </form>
+    </div>
+</body>
+</html>

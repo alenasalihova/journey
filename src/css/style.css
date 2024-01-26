@@ -1,4 +1,4 @@
-body {
+.App {
     max-width: 1000px;
     width: 100%;
     min-width: 600px;
@@ -55,7 +55,7 @@ nav a, .aboutus{
 }
 
 /*header*/
-header {
+.header {
     background-image: url(../../public/img/фон\ титул.png);
     background-size: 110% 100%;
     background-repeat: no-repeat;
@@ -228,7 +228,6 @@ p {
 }
 .info {
     margin-left: 10px;
-
     font-size: small;
 }
 #weather-icon {
